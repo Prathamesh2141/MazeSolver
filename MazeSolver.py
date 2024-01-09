@@ -1,5 +1,8 @@
 import random
 
+
+
+
 def solve_maze(maze, start, end, path=[]):
     row, col = start
     if start == end:
@@ -98,3 +101,6 @@ if __name__ == "__main__":
 
         else:
             print("Invalid choice. Please enter 1, 2, 3, or 4.")
+
+
+pritn("final out put as complet the project");           
