@@ -47,7 +47,7 @@ Path for Rat:
 
 
 
-I am currently immersed in developing a Maze Solver project using Python. Leveraging the terminal and the random library, alongside other essential Python libraries, I am crafting a maze-solving algorithm. The project aims to create an efficient and adaptable solution for navigating mazes, providing a seamless experience through the terminal interface. Stay tuned for an exciting blend of code, algorithms, and maze-solving magic
+I am currently immersed in developing a Maze Solver project using Python. Leveraging the terminal and the random library, alongside other essential Python libraries, I am crafting a maze-solving algorithm. The project aims to create an efficient and adaptable solution for navigating mazes, providing a seamless experience through the terminal interface. Stay tuned for an exciting blend of code, algorithms, and maze-solving magic.
 
 
 
