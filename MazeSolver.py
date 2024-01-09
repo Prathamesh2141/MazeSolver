@@ -40,3 +40,61 @@ def print_maze(maze):
                 print("| ", end=" ")
         print("|")
     print("+ ---" * len(maze[0]) + " +")
+
+
+if __name__ == "__main__":
+    maze_data = []
+
+    while True:
+        print("\nOptions:")
+        print("1. Create random maze")
+        print("2. Solve and display solution")
+        print("3. Create and solve a new maze")
+        print("4. Exit")
+
+        choice = input("Enter your choice (1, 2, 3, or 4): ")
+
+        if choice == "1":
+            rows = int(input("Enter the number of rows for the maze: "))
+            cols = int(input("Enter the number of columns for the maze: "))
+            maze_data = create_random_maze(rows, cols)
+
+            print("\nOriginal Maze:")
+            print_maze(maze_data)
+
+            start_point = (0, 0)
+            end_point = (rows - 1, cols - 1)
+
+            solution = solve_maze(maze_data, start_point, end_point)
+
+            print("\nMaze with Solution:")
+            print_solution(solution, maze_data)
+
+        elif choice == "2":
+            if not maze_data:
+                print("Please create a maze first (Option 1).")
+            else:
+                print_solution(solution, maze_data)
+
+        elif choice == "3":
+            rows = int(input("Enter the number of rows for the new maze: "))
+            cols = int(input("Enter the number of columns for the new maze: "))
+            maze_data = create_random_maze(rows, cols)
+
+            print("\nOriginal Maze:")
+            print_maze(maze_data)
+
+            start_point = (0, 0)
+            end_point = (rows - 1, cols - 1)
+
+            solution = solve_maze(maze_data, start_point, end_point)
+
+            print("\nMaze with Solution:")
+            print_solution(solution, maze_data)
+
+        elif choice == "4":
+            print("Exiting the program.")
+            break
+
+        else:
+            print("Invalid choice. Please enter 1, 2, 3, or 4.")
