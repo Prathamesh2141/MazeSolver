@@ -1,3 +1,5 @@
+import random
+
 def solve_maze(maze, start, end, path=[]):
     row, col = start
     if start == end:
@@ -10,3 +12,31 @@ def solve_maze(maze, start, end, path=[]):
             if new_path:
                 return new_path
     return None
+
+
+def create_random_maze(rows, cols):
+    maze = [["⭕" for _ in range(cols)] for _ in range(rows)]
+
+    # Add walls
+    wall_percentage = 25
+    num_walls = int((rows * cols * wall_percentage) / 100)
+
+    for _ in range(num_walls):
+        row, col = random.randint(0, rows - 1), random.randint(0, cols - 1)
+        maze[row][col] = "▓"
+
+    return maze
+
+def print_maze(maze):
+    print("maze:")
+    for i in range(len(maze)):
+        print("+ ---" * len(maze[0]) + " +")
+        for j in range(len(maze[0])):
+            if maze[i][j] == "⭕":
+                print("| ⭕", end=" ")
+            elif maze[i][j] == "▓":
+                print("| ▓ ", end=" ")
+            else:
+                print("| ", end=" ")
+        print("|")
+    print("+ ---" * len(maze[0]) + " +")
