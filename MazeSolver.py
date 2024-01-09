@@ -1,8 +1,5 @@
 import random
 
-
-
-
 def solve_maze(maze, start, end, path=[]):
     row, col = start
     if start == end:
@@ -16,6 +13,30 @@ def solve_maze(maze, start, end, path=[]):
                 return new_path
     return None
 
+def print_solution(solution, maze):
+    if solution:
+        print("\nsolution:")
+        for i in range(len(maze)):
+            print("+ ---" * len(maze[0]) + " +")
+            for j in range(len(maze[0])):
+                if (i, j) == solution[0]:  # Starting point
+                    print("| S ", end=" ")  # Print "S" in green color
+                elif (i, j) == solution[-1]:  # End point
+                    print("| E ", end=" ")  # Print "E" in red color
+                elif (i, j) in solution:
+                    print("| 🟢", end=" ")
+                elif maze[i][j] == "⭕":
+                    print("| ⭕", end=" ")
+                elif maze[i][j] == "▓":
+                    print("| ▓ ", end=" ")
+                else:
+                    print("| ", end=" ")
+            print("|")
+        print("+ ---" * len(maze[0]) + " +")
+        print(f"\nNumber of steps taken to solve the maze: {len(solution) - 1}")
+
+    else:
+        print("No solution found")
 
 def create_random_maze(rows, cols):
     maze = [["⭕" for _ in range(cols)] for _ in range(rows)]
@@ -43,7 +64,6 @@ def print_maze(maze):
                 print("| ", end=" ")
         print("|")
     print("+ ---" * len(maze[0]) + " +")
-
 
 if __name__ == "__main__":
     maze_data = []
@@ -101,6 +121,3 @@ if __name__ == "__main__":
 
         else:
             print("Invalid choice. Please enter 1, 2, 3, or 4.")
-
-
-pritn("final out put as complet the project");           
