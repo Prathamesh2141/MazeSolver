@@ -1,4 +1,6 @@
 import random
+from colorama import Fore, Style  # Import necessary modules from colorama
+
 
 def solve_maze(maze, start, end, path=[]):
     row, col = start
@@ -15,55 +17,58 @@ def solve_maze(maze, start, end, path=[]):
 
 def print_solution(solution, maze):
     if solution:
-        print("\nsolution:")
+        print(Fore.GREEN + "\nSolution:" + Style.RESET_ALL)
         for i in range(len(maze)):
             print("+ ---" * len(maze[0]) + " +")
             for j in range(len(maze[0])):
                 if (i, j) == solution[0]:  # Starting point
-                    print("| S ", end=" ")  # Print "S" in green color
+                    print("|", Fore.GREEN + " S ", end=" " + Style.RESET_ALL)  # Print "S" in green color
                 elif (i, j) == solution[-1]:  # End point
-                    print("| E ", end=" ")  # Print "E" in red color
+                    print("|", Fore.RED + " E ", end=" " + Style.RESET_ALL)  # Print "E" in red color
                 elif (i, j) in solution:
-                    print("| 🟢", end=" ")
+                    print("|", Fore.CYAN + "🟢" + Style.RESET_ALL, end=" ")
                 elif maze[i][j] == "⭕":
-                    print("| ⭕", end=" ")
+                    print("|", Fore.WHITE + "⭕" + Style.RESET_ALL, end=" ")
                 elif maze[i][j] == "▓":
-                    print("| ▓ ", end=" ")
+                    print("|", Fore.YELLOW + "▓ " + Style.RESET_ALL, end=" ")
                 else:
-                    print("| ", end=" ")
+                    print("|", end=" ")
             print("|")
         print("+ ---" * len(maze[0]) + " +")
-        print(f"\nNumber of steps taken to solve the maze: {len(solution) - 1}")
+        print(Fore.CYAN + f"\nNumber of steps taken to solve the maze: {len(solution) - 1}" + Style.RESET_ALL)
 
     else:
         print("No solution found")
 
-def create_random_maze(rows, cols):
-    maze = [["⭕" for _ in range(cols)] for _ in range(rows)]
+
+def create_random_maze(n):
+    maze = [["⭕" for _ in range(n)] for _ in range(n)]
 
     # Add walls
     wall_percentage = 25
-    num_walls = int((rows * cols * wall_percentage) / 100)
+    num_walls = int((n * n * wall_percentage) / 100)
 
     for _ in range(num_walls):
-        row, col = random.randint(0, rows - 1), random.randint(0, cols - 1)
+        row, col = random.randint(0, n - 1), random.randint(0, n - 1)
         maze[row][col] = "▓"
 
     return maze
 
+
 def print_maze(maze):
-    print("maze:")
+    print(Fore.WHITE + "Maze:" + Style.RESET_ALL)
     for i in range(len(maze)):
         print("+ ---" * len(maze[0]) + " +")
         for j in range(len(maze[0])):
             if maze[i][j] == "⭕":
-                print("| ⭕", end=" ")
+                print("|", Fore.WHITE + "⭕" + Style.RESET_ALL, end=" ")
             elif maze[i][j] == "▓":
-                print("| ▓ ", end=" ")
+                print("|", Fore.YELLOW + "▓ " + Style.RESET_ALL, end=" ")
             else:
-                print("| ", end=" ")
+                print("|", end=" ")
         print("|")
     print("+ ---" * len(maze[0]) + " +")
+
 
 if __name__ == "__main__":
     maze_data = []
@@ -78,19 +83,18 @@ if __name__ == "__main__":
         choice = input("Enter your choice (1, 2, 3, or 4): ")
 
         if choice == "1":
-            rows = int(input("Enter the number of rows for the maze: "))
-            cols = int(input("Enter the number of columns for the maze: "))
-            maze_data = create_random_maze(rows, cols)
+            n = int(input("Enter the number of rows and columns for the maze (n): "))
+            maze_data = create_random_maze(n)
 
-            print("\nOriginal Maze:")
+            print("\n" + Fore.WHITE + "Original Maze:" + Style.RESET_ALL)
             print_maze(maze_data)
 
             start_point = (0, 0)
-            end_point = (rows - 1, cols - 1)
+            end_point = (n - 1, n - 1)
 
             solution = solve_maze(maze_data, start_point, end_point)
 
-            print("\nMaze with Solution:")
+            print("\n" + Fore.WHITE + "Maze with Solution:" + Style.RESET_ALL)
             print_solution(solution, maze_data)
 
         elif choice == "2":
@@ -100,19 +104,18 @@ if __name__ == "__main__":
                 print_solution(solution, maze_data)
 
         elif choice == "3":
-            rows = int(input("Enter the number of rows for the new maze: "))
-            cols = int(input("Enter the number of columns for the new maze: "))
-            maze_data = create_random_maze(rows, cols)
+            n = int(input("Enter the number of rows and columns for the new maze (n): "))
+            maze_data = create_random_maze(n)
 
-            print("\nOriginal Maze:")
+            print("\n" + Fore.WHITE + "Original Maze:" + Style.RESET_ALL)
             print_maze(maze_data)
 
             start_point = (0, 0)
-            end_point = (rows - 1, cols - 1)
+            end_point = (n - 1, n - 1)
 
             solution = solve_maze(maze_data, start_point, end_point)
 
-            print("\nMaze with Solution:")
+            print("\n" + Fore.WHITE + "Maze with Solution:" + Style.RESET_ALL)
             print_solution(solution, maze_data)
 
         elif choice == "4":
@@ -120,4 +123,4 @@ if __name__ == "__main__":
             break
 
         else:
-            print("Invalid choice. Please enter 1, 2, 3, or 4.")
+            print(Fore.RED + "Invalid choice. Please enter 1, 2, 3, or 4." + Style.RESET_ALL)
