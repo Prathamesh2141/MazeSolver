@@ -38,12 +38,14 @@ Maze:
 
 Maze:
 
-![image](https://github.com/Prathamesh2141/MazeSolver/assets/119419554/923dac45-5fc8-455c-bd47-b49c4cc28a4a)
+![image](https://github.com/Prathamesh2141/MazeSolver/assets/119419554/593b67ae-9995-4845-bdcc-6fb2feca9dd8)
+
+
 
 
 Path for Rat:
 
-![image](https://github.com/Prathamesh2141/MazeSolver/assets/119419554/a7dbfdf3-07fe-4229-9ed5-60a53bd7cefd)
+![image](https://github.com/Prathamesh2141/MazeSolver/assets/119419554/da56e9d2-169e-4e0b-9a41-a33927d0150b)
 
 
 
